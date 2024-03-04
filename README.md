@@ -36,7 +36,7 @@ https://github.com/TheBridge-FullStackDeveloper/temario_fullstack_FT_feb24_MAD/b
 3. Crear un script que tome los datos de la API https://opentdb.com/.
 
 
-4. Crear un script que genere el html correspondiente a cada pregunta y sus respuestas.
+4. Crear un script que genere el html correspondiente a cada pregunta y sus respuestas completándose con los datos de la API.
 5. Añadir estilos CSS.
 
 
