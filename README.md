@@ -40,3 +40,24 @@ https://github.com/TheBridge-FullStackDeveloper/temario_fullstack_FT_feb24_MAD/b
 5. Añadir estilos CSS.
 
 
+-------
+
+SCRIPT
+
+1. Se recojen los datos de la API https://opentdb.com/. Url correspondiente a "Cultura general", "Nivel medio". (Modificable).
+
+2. Se crea un array de objetos objQuizAll, donde cada objeto contiene la información necesaria para cada pregunta y posee la siguiente estructura: 
+
+        ObjQuizAll = [{   
+            category: "General Knowledge",
+            correct_answer: "Southeast",    
+            difficulty:"medium",
+            incorrect_answers:['Southwest', 'Northwest', 'Northeast'],
+            question:"What direction does the Statue of Liberty face?",
+            type: "multiple"
+            }, 
+            {
+            ...
+            }]
+    
+3. 
