@@ -1,164 +1,155 @@
+//This function includes the correct answer in a random positition into the incorrect_answers' array.
+const shaker = (arr, add) => {
 
-const shaker = (arr,add) => {
-
-    let num = Math.floor(Math.random()* arr.length);
-    arr.splice(num,0,add);
+    let num = Math.floor(Math.random() * arr.length);
+    //.splice(parámetro1:indica a partir de dónde introduzco el cambio(aquí pasamos el número aleatorio),parámetro 2: cuántos elementos elimino(en este caso ninguno, porque sólo quiero añadir), parámetro 3: lo que añado)
+    arr.splice(num, 0, add);
     return arr;
 }
-//1. Getting data
+//1. Getting data from API
 async function getQuiz() {
     let petition = await fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
     let rest = await petition.json()
- 
+
     let objQuizAll = rest.results;
-   
-//Introducing correct answer in a random positition into incorrect_answers array.
 
     for (let i = 0; i < objQuizAll.length; i++) {
-        //Array con todas las respuestas posibles
-        //let answersAll = [objQuizAll.correct_answer, objQuizAll.incorrect_answers[0], objQuizAll.incorrect_answers[1], objQuizAll.incorrect_answers[2]];
-        //splice(desde_donde_cambia (el número aleatorio),cuántos quito(cero en mi caso), lo que añado)
-        
-        let allAnswers=shaker(objQuizAll.incorrect_answers,objQuizAll.correct_answer);
-        console.log(allAnswers)
-    }
+
+        let question = objQuizAll[i].question;//variable que contiene la pregunta
+        let correct_answer = objQuizAll[i].correct_answer;//variable que contiene la respuesta correcta
+        let incorrect_answers = objQuizAll[i].incorrect_answers;//variable que contiene las respuestas incorrectas
+
+
+        let answersAll = shaker(incorrect_answers, correct_answer);//variable que contiene la pregunta y las respuestas ya mezcladas de forma aleatoria.
+        //console.log(question, answersAll);
+        //return question, answersAll;
+
+        let quizBlock = ` <fieldset>
+            
+        <section class="questionSection">
+        <h1 class="pregunta">"${question}" </h1>
+        </section>`
+
+        for (let j = 0; j < answersAll.length; j++) {
+
+            let answerElement = `
+            <section class="answersSection">
+            <label for="${answersAll[j]}">${answersAll[j]}</label>
+            <input id="${answersAll[j]}" name="${objQuizAll[i].correct_answer}" value="${answersAll[j]}" type="radio" required/>
+            </section>
+            `
+            quizBlock += answerElement;
+        }
+        quizBlock += `</fieldset>`
     
-        //función que genera un número aleatorio y lo asigna como primer argumento al método splice para cambiar uno de los ítems del array de posición.
+        //Pinta el quizBlock en el DOM
+        document.getElementById('form').innerHTML += quizBlock;
+    }
+}
+    //---ADICIÓN DEL ELEMENTO SUBMIT AL DOM AL FINAL DEL QUIZ
+    document.getElementById('quizColors').innerHTML += `<input type="submit" value="Enviar respuestas"></input>`
 
-       
-    //question
-    let quiz = `
-        <fieldset>
-                <section>
-                <h1 class="pregunta">"${quizObjAll[i].question}" </h1>
-                </section>
-                <section>   
-`
-    //answers
-    for (let j = 0; j < quizObj[i].answerAtts.length; j++) {
+    //-------------------VALIDACIÓN-----------------------------
 
-        let answer = `
-        <div>
-        <label for="${quizObj[i].answerAtts[j].inpFor_Id}">${quizObj[i].answerAtts[j].labText}</label>
-        <input id="${quizObj[i].answerAtts[j].inpFor_Id}" name="${quizObj[i].answerAtts[j].inpName}" value="${quizObj[i].answerAtts[j].inpVal}" type="radio" required/>
-        </div>
-        `
-        quiz += answer;
 
+    let msj //declaro msj para rellenarla con el mensaje a mostrar en cada caso más adelante.
+
+    //---OBJETO CON LAS RESPUESTAS CORRECTAS
+    const respuestas = {
+        //clave = propiedad 'name', valor = 'value'
+        'answ1': 'amarillo',
+        'answ2': 'todas',
+        'answ3': 'torrija',
+        'answ4': 'pinguino',
+        'answ5': 'otoño'
     }
 
-    //---ADICIÓN DEL CIERRE DE BLOQUE DE RESPUESTAS
-    quiz += `<article></fieldset>`
+    //---CREANDO EN EL DOM UN PÁRRAFO CON LOS ERRORES
+    let p = document.getElementById('errors')
+    p.style.color = "red";
+    p.style.fontSize = "16px";
 
-    //---PINTANDO EL QUIZ EN EL DOM
-    document.getElementById('quizColors').innerHTML += quiz;
+
+    //Añado listener y llamo al objeto event para leer las respuestas del usuario
+    document.querySelector('form').addEventListener('submit', function (event) {
+
+        //Paralizo el envío del formulario
+        event.preventDefault();
+
+        //Asigno el valor de las respuestas del usuario a su respectiva variable
+        let userAnsw1 = event.target.q1.value;
+        let userAnsw2 = event.target.q2.value;
+        let userAnsw3 = event.target.q3.value;
+        let userAnsw4 = event.target.q4.value;
+
+        msj = '';//incio msj como string vacío
+
+        //Possible answer 1: Output errors
+
+        if (userAnsw1 == respuestas.answ1) {
+            msj += 'Q1: Correcto. ¡Enhorabuena!\n';
+        } else {
+            msj += 'Q1: Incorrecto. El limón no es de ese color.\n'
+        }
+
+        //Possible answer 2:  Output errors
+
+        if (userAnsw2 == respuestas.answ2) {
+            msj += 'Q2: Correcto. ¡Enhorabuena!\n';
+
+        } else {
+            msj += 'Q2: Incorrecto. Parece que necesitas descansar.\n';
+        }
+        //Possible answer 3: Output errors
+        if (userAnsw3 == respuestas.answ3) {
+            msj += 'Q3: Correcto. ¡Enhorabuena!\n';
+        } else {
+            msj += 'Q3: Incorrecto. Parece que necesitas descansar.\n';
+        }
+
+        //Possible answer 4: Output errors
+        if (userAnsw4 == respuestas.answ4) {
+            msj += 'Q4: Correcto. ¡Enhorabuena!\n';
+        } else {
+            msj += 'Q4: Incorrecto. Parece que necesitas descansar.\n';
+        }
+        p.innerHTML = msj;
+        alert(msj);
+
+        msj = '';
+
+    });
+    //Lista de correcciones
+
+    /* 
+    1. inputs: flex
+    2. Simplificar errores 
+    3. Elegir estética
+    4. Elegir tema
+    5. Perfeccionar el archivo readme.md
+    
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
-
-//---ADICIÓN DEL ELEMENTO SUBMIT AL DOM AL FINAL DEL QUIZ
-document.getElementById('quizColors').innerHTML += `<input type="submit" value="Enviar respuestas"></input>`
-
-//-------------------VALIDACIÓN-----------------------------
-
-
-let msj //declaro msj para rellenarla con el mensaje a mostrar en cada caso más adelante.
-
-//---OBJETO CON LAS RESPUESTAS CORRECTAS
-const respuestas = {
-    //clave = propiedad 'name', valor = 'value'
-    'answ1': 'amarillo',
-    'answ2': 'todas',
-    'answ3': 'torrija',
-    'answ4': 'pinguino',
-    'answ5': 'otoño'
-}
-
-//---CREANDO EN EL DOM UN PÁRRAFO CON LOS ERRORES
-let p = document.getElementById('errors')
-p.style.color = "red";
-p.style.fontSize = "16px";
-
-
-//Añado listener y llamo al objeto event para leer las respuestas del usuario
-document.querySelector('form').addEventListener('submit', function (event) {
-
-    //Paralizo el envío del formulario
-    event.preventDefault();
-
-    //Asigno el valor de las respuestas del usuario a su respectiva variable
-    let userAnsw1 = event.target.q1.value;
-    let userAnsw2 = event.target.q2.value;
-    let userAnsw3 = event.target.q3.value;
-    let userAnsw4 = event.target.q4.value;
-
-    msj = '';//incio msj como string vacío
-
-    //Possible answer 1: Output errors
-
-    if (userAnsw1 == respuestas.answ1) {
-        msj += 'Q1: Correcto. ¡Enhorabuena!\n';
-    } else {
-        msj += 'Q1: Incorrecto. El limón no es de ese color.\n'
-    }
-
-    //Possible answer 2:  Output errors
-
-    if (userAnsw2 == respuestas.answ2) {
-        msj += 'Q2: Correcto. ¡Enhorabuena!\n';
-
-    } else {
-        msj += 'Q2: Incorrecto. Parece que necesitas descansar.\n';
-    }
-    //Possible answer 3: Output errors
-    if (userAnsw3 == respuestas.answ3) {
-        msj += 'Q3: Correcto. ¡Enhorabuena!\n';
-    } else {
-        msj += 'Q3: Incorrecto. Parece que necesitas descansar.\n';
-    }
-
-    //Possible answer 4: Output errors
-    if (userAnsw4 == respuestas.answ4) {
-        msj += 'Q4: Correcto. ¡Enhorabuena!\n';
-    } else {
-        msj += 'Q4: Incorrecto. Parece que necesitas descansar.\n';
-    }
-    p.innerHTML = msj;
-    alert(msj);
-
-    msj = '';
-
-});  
-//Lista de correcciones
-
-/* 
-1. inputs: flex
-2. Simplificar errores 
-3. Elegir estética
-4. Elegir tema
-5. Perfeccionar el archivo readme.md
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    } 
 
 console.log(quest)
 console.log(corrAnsw)

@@ -33,20 +33,22 @@ https://github.com/TheBridge-FullStackDeveloper/temario_fullstack_FT_feb24_MAD/b
     - [ ] Botón "Siguiente".
     - [ ] Contador de respuestas acertadas y no acertadas.
     - [ ] Título del Quizz
-3. Crear un script que tome los datos de la API https://opentdb.com/.
+3.[X] Crear un script que tome los datos de la API https://opentdb.com/.
 
 
-4. Crear un script que genere el html correspondiente a cada pregunta y sus respuestas completándose con los datos de la API.
+4.[X]Crear un script que genere el html correspondiente a cada pregunta y sus respuestas completándose con los datos de la API.
 5. Añadir estilos CSS.
 
 
 -------
 
-SCRIPT
+# SCRIPT #
 
-1. Se recojen los datos de la API https://opentdb.com/. Url correspondiente a "Cultura general", "Nivel medio". (Modificable).
+## 1. Getting data ##
 
-2. Se crea un array de objetos objQuizAll, donde cada objeto contiene la información necesaria para cada pregunta y posee la siguiente estructura: 
+Tomamos los datos de la API https://opentdb.com/. Url correspondiente a "Cultura general", "Nivel medio". (Modificable).
+
+2. Se crea un array de objetos objQuizAll, donde cada objeto contiene la información necesaria para cada pregunta y sus respuestas. Esta es la estructura de la promesa recibida: 
 
         ObjQuizAll = [{   
             category: "General Knowledge",
@@ -60,4 +62,25 @@ SCRIPT
             ...
             }]
     
-3. 
+3. Creado el script que genere el html correspondiente a cada pregunta y sus respuestas completándose con los datos de la API. Para ello hemos creado un bucle for que:
+    - Crea un bloque html con la pregunta y sus respuestas (datos tomados de la API). 
+    - En las respuestas se llama a la función shaker() para combinar de forma aleatoria las respuestas correctas e incorrectas en el mismo array.
+    - Pinta en el DOM una pregunta y sus posibles respuestas. Dentro de este bucle se llama a la función shaker(), que incluirá, en una posición aleatoria, un item que corresponde con la respuesta correcta
+
+
+# FUNCTIONS #
+
+const shaker = (arr,add) => {
+
+    let num = Math.floor(Math.random()* arr.length);
+    arr.splice(num,0,add);
+    return arr;
+}
+
+
+This function includes the correct answer in a random positition into the incorrect_answers' array.
+
+Returns this: 
+
+What did the Spanish autonomous community of Catalonia ban in 2010, that took effect in 2012? 
+(4) ['Fiestas', 'Bullfighting', 'Flamenco', 'Mariachi']
