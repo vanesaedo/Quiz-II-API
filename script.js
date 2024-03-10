@@ -45,7 +45,7 @@ async function getQuiz() {
         //Pinta el quizBlock en el DOM
         document.getElementById('form').innerHTML += quizBlock;
     }
-}
+}/* 
     //---ADICIÓN DEL ELEMENTO SUBMIT AL DOM AL FINAL DEL QUIZ
     document.getElementById('quizColors').innerHTML += `<input type="submit" value="Enviar respuestas"></input>`
 
@@ -129,25 +129,7 @@ async function getQuiz() {
     5. Perfeccionar el archivo readme.md
     
     */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 
 }
 
@@ -253,4 +235,4 @@ document.querySelector("form").addEventListener("submit", function (event) {
 });
 
 
-pintarTablas();
+pintarTablas(); */
