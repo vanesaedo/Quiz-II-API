@@ -58,7 +58,6 @@ async function startQuiz (){
 startQuiz()
 
 document.getElementById('nextButton').addEventListener('click', function(event){
-    
     i++;
 }
 )
