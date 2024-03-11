@@ -25,7 +25,7 @@ Desplegar la app en gitHub Pages
 https://github.com/TheBridge-FullStackDeveloper/temario_fullstack_FT_feb24_MAD/blob/main/teoria/js_avanzado/quiz.md
 
 ## Pasos a seguir ##
-1[ ]. Crear index.html (Presentación del Quiz)
+1[X]. Crear index.html (Presentación del Quiz)
     - Botón "Iniciar quizz"
     - [ ] Título del Quizz
 2[ ]. Crear quiz.html que incluya:
