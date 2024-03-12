@@ -3,6 +3,8 @@ let corrAnswer = []
 let incorrAnswers = []
 let counter = 0;
 
+
+
 //This function includes the correct answer in a random positition into the incorrect_answers' array.
 const shaker = (arr, add) => {
     let num = Math.floor(Math.random() * arr.length);
@@ -23,18 +25,49 @@ function printQuestion(completeQuestion) {
     <h3>${completeQuestion.question}</h3>
    </section>
    <section id="respuesta">
-   <input type="radio" name="${completeQuestion.correct_answer}" value="${answersAll[0]}"/>
-   <label for="${completeQuestion.correct_answer}">${answersAll[0]}</label>
-   <input type="radio" name="${completeQuestion.correct_answer}" value="${answersAll[1]}"/>
-   <label for="${completeQuestion.correct_answer}">${answersAll[1]}</label>
-   <input type="radio" name="${completeQuestion.correct_answer}" value="${answersAll[2]}"/>
-   <label for="${completeQuestion.correct_answer}">${answersAll[2]}</label>
-   <input type="radio" name="${completeQuestion.correct_answer}" value="${answersAll[3]}"/>
-   <label for="${completeQuestion.correct_answer}">${answersAll[3]}</label>
+   <input id="idforInput1" type="radio" name="respName" value="${answersAll[0]}"/>
+   <label for="idforInput1">${answersAll[0]}</label>
+   <input id="idforInput2" type="radio" name="respName" value="${answersAll[1]}"/>
+   <label for="idforInput">${answersAll[1]}</label>
+   <input id="idforInput3" type="radio" name="respName" value="${answersAll[2]}"/>
+   <label for="idforInput3">${answersAll[2]}</label>
+   <input id="idforInput4" type="radio" name="respName" value="${answersAll[3]}"/>
+   <label for="idforInput4">${answersAll[3]}</label>
    </section>`
 
     document.getElementById("quiz").innerHTML = preg;
 }
+
+function radioChecked(e, f, g, h) {
+
+    if (e.checked ) {
+        return true;
+    } else if (f.checked) {
+        return true;
+    } else if (g.checked) {
+        return true;
+    } else if (h.checked) {
+        return true;
+    }else {
+        return false;
+    }
+}
+
+function radioSelected(a, b, c, d) {
+
+    if (a.checked == true) {
+        return inp1.answersAll[0];
+    } else if (b.checked == true) {
+        return inp2.answersAll[1];
+    } else if (c.checked == true) {
+        return inp3.answersAll[2];
+    } else if (d.checked == true) {
+        return inp4.answersAll[3];
+    }else {
+        return false;
+    }
+}
+
 
 
 //1. Getting data from API: NO BORRAR: Extrae los datos de la API/archivo
@@ -62,88 +95,48 @@ async function getData() {
 
 async function runQuiz() {
     await getData().then(result => {
+
         const { results: questions } = result;
         console.log(questions);
 
         printQuestion(questions[counter])
         // Toda la lógica que necesite las preguntas
 
+        document.getElementById("btn-next").addEventListener("click", function (event) {
+            event.preventDefault();
+
+          
+            let countCorrectas = 0;
+            let countIncorrectas = 0;
 
 
+          
+            let inp1 = document.getElementById("idforInput1");
+            let inp2 = document.getElementById("idforInput2");
+            let inp3 = document.getElementById("idforInput3");
+            let inp4 = document.getElementById("idforInput4");
 
+            console.log(radioSelected())
 
+            if (radioChecked(inp1,inp2,inp3,inp4) == false ){
+                alert("Please, select one option")
+            }
 
-    });
+            if (radioSelected(inp1, inp2, inp3, inp4) == completeQuestion.correct_answer) {
+                countCorrectas++;
+            } else {
+                countIncorrectas++;
+            }
+
+           
+            console.log(countCorrectas,countIncorrectas)
+        });
+     }
+
+    )
 }
 
 
-
-
-
-
-//dataset ya tiene todos los datos que necesito
-/* function arrQuiz(dataset){
-
-for (let i = 0; i < dataset.length; i++) {
-
-    questions.push(dataset.results[i].question);
-    corrAnswer.push(dataset.results[i].correct_answer);
-    incorrAnswers.push(dataset.results[i].incorrect_answers);
-
-}
-console.log(questions,corrAnswer,incorrAnwers)
-return {questions,corrAnswer,incorrAnswers}
-} */
-
-//2. Adding quiz (question + answers) to the DOM.
-
-//const createQuiz = (quest, incAnsw, corrAnsw, item) => { 
-//par1: question,
-
-
-//Pinta la pregunta y sus opciones
-
-// Coge por parámetro la pregunta que debe pintar (un objeto)
-// Randomiza las opciones
-// Pinta en el DOM la pregunta y las opciones
-
-
-
-/*  let quiz = `            
- <article class="question"> <h3 class="title-question">${question}</h3>`
- for (let j = 0; j < answersAll.length; j++) {
-     let answer = `<button type="button" class="btn-answer" value="${answersAll[j]}">${answersAll[j]}</button>`
-     quiz += answer;
- }
- quiz += `</article>`
- document.getElementById('quiz').innerHTML += quiz; */
-
-//createQuiz()
-/* async function startQuiz() {
-    const pregunta = await getQuiz();
-    console.log(pregunta);
-    createQuiz(bloquePregunta, counter);
-} */
-//startQuiz() 
-//getQuiz()
-//createQuiz(bloquePregunta, counter);
-//boton con evento que
-//comprobar si hay alguna respuesta marcada
-// si no hay respuesta marcada -> mensaje
-
-// si hay respuesta marcada
-//   comprobar si marcada coincide con correcta
-//      si coincide +1 puntuación 
-//      +1 contador (si falla o si acierta)
-
-/* document.getElementById('nextButton').addEventListener('click', function(event){
-
-
-    contador++;
-    startQuiz(); 
-
-    
-}) */
 
 
 
