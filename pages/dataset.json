@@ -1,0 +1,125 @@
+{
+    "response_code": 0,
+    "results": [
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "What is the name of the popular animatronic singing fish prop, singing such hits such as &quot;Don&#039;t Worry, Be Happy&quot;?",
+    "correct_answer": "Big Mouth Billy Bass",
+    "incorrect_answers": [
+    "Big Billy Bass",
+    "Singing Fish",
+    "Sardeen"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "Who is a co-founder of music streaming service Spotify?",
+    "correct_answer": "Daniel Ek",
+    "incorrect_answers": [
+    "Sean Parker",
+    "Felix Miller",
+    "Michael Breidenbruecker"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "What is real haggis made of?",
+    "correct_answer": "Sheep&#039;s Heart, Liver and Lungs",
+    "incorrect_answers": [
+    "Sheep&#039;s Heart, Kidneys and Lungs",
+    "Sheep&#039;s Liver, Kidneys and Eyes",
+    "Whole Sheep"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "The website &quot;Shut Up &amp; Sit Down&quot; reviews which form of media?",
+    "correct_answer": "Board Games",
+    "incorrect_answers": [
+    "Television Shows",
+    "Video Games",
+    "Films"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "On average, Americans consume 100 pounds of what per second?",
+    "correct_answer": "Chocolate",
+    "incorrect_answers": [
+    "Potatoes",
+    "Donuts",
+    "Cocaine"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "What was the soft drink Pepsi originally introduced as?",
+    "correct_answer": "Brad&#039;s Drink",
+    "incorrect_answers": [
+    "Pepsin Pop",
+    "Carolina Cola",
+    "Pepsin Syrup"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "What year was Apple Inc. founded?",
+    "correct_answer": "1976",
+    "incorrect_answers": [
+    "1978",
+    "1980",
+    "1974"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "What alcoholic drink is mainly made from juniper berries?",
+    "correct_answer": "Gin",
+    "incorrect_answers": [
+    "Vodka",
+    "Rum",
+    "Tequila"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "Directly between the Washington Monument and the Reflecting Pool is a memorial to which war?",
+    "correct_answer": "World War II",
+    "incorrect_answers": [
+    "Vietnam War",
+    "American Civil War",
+    "American Revolutionary War"
+    ]
+    },
+    {
+    "type": "multiple",
+    "difficulty": "medium",
+    "category": "General Knowledge",
+    "question": "Which logical fallacy means to attack the character of your opponent rather than their arguments?",
+    "correct_answer": "Ad hominem",
+    "incorrect_answers": [
+    "Post hoc ergo propter hoc",
+    "Tu quoque",
+    "Argumentum ad populum"
+    ]
+    }
+    ]
+    }
