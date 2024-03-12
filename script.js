@@ -1,7 +1,12 @@
-let questions = []
+/* let questions = []
 let corrAnswer = []
-let incorrAnswers = []
+let incorrAnswers = [] */
 let counter = 0;
+let countCorrectas = 0;
+let countIncorrectas = 0;
+let countUnchecked = 0;
+
+
 
 
 
@@ -105,6 +110,42 @@ async function runQuiz() {
         document.getElementById("btn-next").addEventListener("click", function (event) {
             event.preventDefault();
 
+//Desde aquí pegado
+
+const arrayInputs = document.querySelectorAll("input");
+    //el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
+    // recorro todos los input 
+    arrayInputs.forEach(function (input) {
+        //le digo que este pendiente cada vez que el usuario haga input
+        input.addEventListener("input", function (event) {
+            //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
+            //si checked es false
+            arrayInputs.forEach(
+                function (input) {
+                    //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
+                    if (input.checked) {
+                        if(input.value == correct_answer){
+                            countCorrectas++;
+                        } else {
+                            countIncorrectas++;
+                        }
+                    } else {
+                        countUnchecked++
+                        return false;
+                    }
+                })
+                if (countUnchecked == 4){
+                    alert("Please, check one question to coninue.")
+                }
+        });
+    });
+
+    //let respUsuario = [];
+    //respUsuario.push(target.btn-next.value);
+});
+//hasta aquí pegado
+            
+/* 
           
             let countCorrectas = 0;
             let countIncorrectas = 0;
@@ -116,7 +157,7 @@ async function runQuiz() {
             let inp3 = document.getElementById("idforInput3");
             let inp4 = document.getElementById("idforInput4");
 
-            console.log(radioSelected())
+            
 
             if (radioChecked(inp1,inp2,inp3,inp4) == false ){
                 alert("Please, select one option")
@@ -127,14 +168,13 @@ async function runQuiz() {
             } else {
                 countIncorrectas++;
             }
-
+*/
            
             console.log(countCorrectas,countIncorrectas)
-        });
+        }); 
      }
 
-    )
-}
+
 
 
 
