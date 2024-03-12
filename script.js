@@ -1,14 +1,8 @@
-/* let questions = []
-let corrAnswer = []
-let incorrAnswers = [] */
+
 let counter = 0;
 let countCorrectas = 0;
 let countIncorrectas = 0;
 let countUnchecked = 0;
-
-
-
-
 
 //This function includes the correct answer in a random positition into the incorrect_answers' array.
 const shaker = (arr, add) => {
@@ -30,13 +24,13 @@ function printQuestion(completeQuestion) {
     <h3>${completeQuestion.question}</h3>
    </section>
    <section id="respuesta">
-   <input id="idforInput1" type="radio" name="respName" value="${answersAll[0]}"/>
+   <input id="idforInput1" type="radio" name="inpName" value="${answersAll[0]}"/>
    <label for="idforInput1">${answersAll[0]}</label>
-   <input id="idforInput2" type="radio" name="respName" value="${answersAll[1]}"/>
-   <label for="idforInput">${answersAll[1]}</label>
-   <input id="idforInput3" type="radio" name="respName" value="${answersAll[2]}"/>
+   <input id="idforInput2" type="radio" name="inpName" value="${answersAll[1]}"/>
+   <label for="idforInput2">${answersAll[1]}</label>
+   <input id="idforInput3" type="radio" name="inpName" value="${answersAll[2]}"/>
    <label for="idforInput3">${answersAll[2]}</label>
-   <input id="idforInput4" type="radio" name="respName" value="${answersAll[3]}"/>
+   <input id="idforInput4" type="radio" name="inpName" value="${answersAll[3]}"/>
    <label for="idforInput4">${answersAll[3]}</label>
    </section>`
 
@@ -95,9 +89,6 @@ async function getData() {
     //createQuiz(bloquePregunta, counter);
 }
 
-
-
-
 async function runQuiz() {
     await getData().then(result => {
 
@@ -107,10 +98,61 @@ async function runQuiz() {
         printQuestion(questions[counter])
         // Toda la lógica que necesite las preguntas
 
+        //Validación
         document.getElementById("btn-next").addEventListener("click", function (event) {
-            event.preventDefault();
+                    
+            /* let hasError = false;
 
-//Desde aquí pegado
+            //Si no se ha marcado ninguna respuesta
+            let inpValue = document.getElementById('inpName').value;
+            if( inpValue == null || valor.length == 0) {
+                alert('Select an answer to continue.');
+                hasError = true;
+              }
+
+            //Preguntamos si hay alguna respuesta marcada, algún input checked. Si no hay ninguno lanzamos un mensaje con alert.
+            if(!document.querySelector('input[name="inpName"]:checked')) {
+            alert('Error, rellena el campo horario');
+            hasError = true;
+            }
+            //Si se confira que no se ha seleccionado nada se detiene el envío del formulario
+            if(hasError) event.preventDefault(); */
+
+           
+            printQuestion(questions[counter++])
+
+        }); 
+    })};
+
+runQuiz();
+
+           /*  let countCorrectas = 0;
+            let countIncorrectas = 0; */
+
+
+          
+        /*     let inp1 = document.getElementById("idforInput1");
+            let inp2 = document.getElementById("idforInput2");
+            let inp3 = document.getElementById("idforInput3");
+            let inp4 = document.getElementById("idforInput4");
+
+            
+
+            if (radioChecked(inp1,inp2,inp3,inp4) == false ){
+                alert("Please, select one option")
+            }
+
+            if (radioSelected(inp1, inp2, inp3, inp4) == completeQuestion.correct_answer) {
+                countCorrectas++;
+            } else {
+                countIncorrectas++;
+            } */
+
+           
+      
+ 
+
+/*Desde aquí pegado
 
 const arrayInputs = document.querySelectorAll("input");
     //el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
@@ -143,42 +185,4 @@ const arrayInputs = document.querySelectorAll("input");
     //let respUsuario = [];
     //respUsuario.push(target.btn-next.value);
 });
-//hasta aquí pegado
-            
-/* 
-          
-            let countCorrectas = 0;
-            let countIncorrectas = 0;
-
-
-          
-            let inp1 = document.getElementById("idforInput1");
-            let inp2 = document.getElementById("idforInput2");
-            let inp3 = document.getElementById("idforInput3");
-            let inp4 = document.getElementById("idforInput4");
-
-            
-
-            if (radioChecked(inp1,inp2,inp3,inp4) == false ){
-                alert("Please, select one option")
-            }
-
-            if (radioSelected(inp1, inp2, inp3, inp4) == completeQuestion.correct_answer) {
-                countCorrectas++;
-            } else {
-                countIncorrectas++;
-            }
 */
-           
-            console.log(countCorrectas,countIncorrectas)
-        }); 
-     }
-
-
-
-
-
-
-
-
-runQuiz();
