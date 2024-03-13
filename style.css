@@ -22,7 +22,8 @@ section{
 }
 
 div {display: flex;
-flex-direction: column;}
+    justify-content: flex-start;
+flex-direction: row;}
 #respuesta{
 display:flex;
 flex-direction: column;
@@ -50,7 +51,8 @@ input{
     align-items: center;
 }
 input{
-display:none;
+    visibility: hidden;
+
     background-color: hsl(329, 95%, 43%);
     padding: 10px;
     margin: 10px;
