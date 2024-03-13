@@ -14,14 +14,66 @@ main{
     align-items: center;
     margin-bottom: 200px;
 }
+section{
+    display:flex;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+}
 
+div {display: flex;
+flex-direction: column;}
+#respuesta{
+display:flex;
+flex-direction: column;
+
+
+}
+label {
+    padding:40px 80px;
+    border:1px black solid;
+}
+label::content {
+    background-color: brown;
+}
+input:checked {
+
+    background-color: greenyellow;
+}
+input{
+    
+    margin: 40px;
+}
 #inciarJuego{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+input{
+display:none;
+    background-color: hsl(329, 95%, 43%);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
 
+}
+.label{
+    width: 500px;
+    height: 100px;
+    background-color: #D1512D;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 3px solid #F5E8E4;
+    border-radius: 20px;
+    display: flex;
+    color: #F5E8E4;
+    justify-content: center;
+    flex-direction: row-reverse;
 
+}
 
 
 
