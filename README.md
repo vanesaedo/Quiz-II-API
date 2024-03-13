@@ -25,13 +25,12 @@ Desplegar la app en gitHub Pages
 https://github.com/TheBridge-FullStackDeveloper/temario_fullstack_FT_feb24_MAD/blob/main/teoria/js_avanzado/quiz.md
 
 ## Pasos a seguir ##
-1[ ]. Crear index.html (Presentación del Quiz)
+1[X]. Crear index.html (Presentación del Quiz)
     - Botón "Iniciar quizz"
     - [ ] Título del Quizz
-2[ ]. Crear quiz.html que incluya:
+2[X]. Crear quiz.html que incluya:
     - [ ] Etiqueta donde alojar las preguntas y respuestas que generaremos desde el archivo .js con atributo id.
     - [ ] Botón "Siguiente".
-    - [ ] Contador de respuestas acertadas y no acertadas.
     - [ ] Título del Quizz
 3.[X] Crear un script que tome los datos de la API https://opentdb.com/.
 
