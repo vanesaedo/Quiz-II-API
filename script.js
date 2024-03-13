@@ -14,14 +14,6 @@ const shaker = (arr, add) => {
     return arr;
 }
 
-function getCheckedInput (arrInp){
-    
-    
-    if (arrInp.checked) {
-        return arrInp.checked.value;
-    } 
-     
-};
 
 function printQuestion(completeQuestion) {
     // RANDOMIZAR OPCIONES
@@ -115,7 +107,7 @@ async function runQuiz() {
         const { results: questions } = result;
         console.log(questions);
 
-        printQuestion(questions[counter])
+        
         // Toda la lógica que necesite las preguntas
 
         //Validación
@@ -123,7 +115,13 @@ async function runQuiz() {
            event.preventDefault();
                     
         printQuestion(questions[counter++])
-
+        if (counter==10) {
+            let juegoFinalizado = `
+            <h1>¡¡JUEGO TERMINADO!!<h1/>
+            `;
+            document.getElementById("quiz").innerHTML = juegoFinalizado;
+            
+        }
         }); 
     })};
 
