@@ -1,19 +1,15 @@
-*{border: 2px white solid}
+
 
 body{
-  
+  display: flex;
+  flex-direction: column;
     font-family: "Roboto", sans-serif;
     font-weight: 100;
     font-style: normal;
+   
 }
 
-main{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 200px;
-}
+
 section{
     display:flex;
     flex-direction: column;
@@ -21,74 +17,68 @@ section{
     align-items: center;
 }
 
-div {display: flex;
-flex-direction: column;}
-#respuesta{
-display:flex;
-flex-direction: column;
-
-
-}
-label {
-    padding:40px 80px;
-    border:1px black solid;
-}
-label::content {
-    background-color: brown;
-}
-input:checked {
-
-    background-color: greenyellow;
-}
 input{
-    
-    margin: 40px;
+
+    visibility:hidden;
 }
+
 #inciarJuego{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-input{
-display:none;
-    background-color: hsl(329, 95%, 43%);
-    padding: 10px;
-    margin: 10px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
+
+@media only screen and (max-width: 600px){
+
+    #respuesta {
+        display:flex;
+        flex-direction: column;
+        background-color:rgb(249, 226, 196, 0.3);
+        width:90%;
+        height: 80%;
+        margin:0px;
+
+    }
+    #pregunta {
+        display:flex;
+        flex-direction: column;
+        background-color:rgb(249, 226, 196, 0.3);
+        width:60%;
+        height: 12%;        
+        margin:20px;
+
+    }
+    
+    div {
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        background-color: antiquewhite;
+        text-align: center;
+        align-items: center;
+        width:70%;
+        height: 18%;
+        margin:4px;
+    }
+
+    #quiz {
+        height:80vh;
+        display:flex;
+        flex-direction: column;
+        justify-content: stretch;
+    }
 
 }
-.label{
-    width: 500px;
-    height: 100px;
-    background-color: #D1512D;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 10px;
-    border: 3px solid #F5E8E4;
-    border-radius: 20px;
-    display: flex;
-    color: #F5E8E4;
-    justify-content: center;
-    flex-direction: row-reverse;
+@media only screen and (min-width: 1200px){
+    .respuesta, .pregunta {
+        display:flex;
+        flex-direction: column;
+        background-color:rgb(249, 226, 196, 0.3);
+        padding: 20px;
 
-}
+    }
+     
 
-
-
-
-
-#btn-answer :hover{
-     background-color: rgb(225, 16, 141);
-     box-shadow: 10px 0px 10px rgb(110, 6, 69) inset;
-     border-radius: 10px;
-     cursor: pointer;
-}
-
-.contBotonCorregir{
-    display: flex;
-    margin: 20px;
 }
 
 #botonSubmit{
@@ -105,6 +95,7 @@ display:none;
 
 .title-question {
     font-size: 2rem;
+    font-weight: 300px;
 }
 .btn-answer{
     border: 12px black solid;
@@ -127,3 +118,4 @@ display:none;
     border-radius: 4px;
    
 }
+

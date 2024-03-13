@@ -17,10 +17,12 @@ const shaker = (arr, add) => {
 function getCheckedInput (arrInp){
     
     for (let i = 0; i < arrInp.length; i++) {
+       
     if (arrInp[i].checked == true) {
         return arrInp[i].value;
-    } 
-    return arrInp[i].value; 
+    }  
+    
+    //return arrInp[i].value; 
 }};
 
 function printQuestion(completeQuestion) {
