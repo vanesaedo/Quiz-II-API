@@ -1,102 +1,102 @@
-const preguntas = ["¿Quién es considerado el hombre que inventó el teléfono?", "Este planeta gira más rápido, completando una rotación completa en solo 10 horas. ¿Qué planeta es?", "¿Cuál es la sustancia natural más dura de la Tierra?", "¿Cuántos dientes tiene un ser humano adulto?", "Este animal fue el primero en ser lanzado al espacio. La ataron a la nave espacial soviética Sputnik 2 que fue enviada al espacio exterior el 3 de noviembre de 1957. ¿Cuál era su nombre?", "¿Quién fue la primera mujer en el espacio?", "¿En qué parte del cuerpo humano se encuentran la mayoría de las glándulas sudoríparas?", "¿cuánto tarda la luz del sol en llegar a la Tierra?", "¿Cuántos huesos hay en el cuerpo humano?", "¿Cómo se llama el proceso de descomposición de los alimentos?"];
 
-const respuestas = ["Graham Bell", "Júpiter", "Diamante", "32", "Laika", "Valentina tereshkova", "Parte inferior de los pies", "8 minutos", "206", "Digestión"];
+let counter = 0;
+let countCorrectas = 0;
+let countIncorrectas = 0;
+let countUnchecked = 0;
+let userAnswersAll = [];
 
-const respuesFalsas = ["Newton", "Tesla", "Manolo de Telefonica", "Marte", "Pandora", "Tatooine", "Hulk", "Titanio", "Adamantium", "23", "58", "1024", "Lassie", "Scooby-DO", "Snoopy", "Capitana Marvel", "Belén Esteban", "Marie Curie", "Las axilas", "Los ojos", "Las pestañas", "8 horas", "8 dias", "8 nanosegundos", "207", "307", "308", "Implosión", "Desintegración", "Hadouken"]
 
-
-
-function shuffle (array){                 // funcion para solucionar el probelma de mezclar las posiciones de las respuestas
-    array.sort(()=> Math.random() -0.5);
+//This function includes the correct answer in a random positition into the incorrect_answers' array.
+const shaker = (arr, add) => {
+    let num = Math.floor(Math.random() * arr.length);
+    //.splice(parámetro1:indica a partir de dónde introduzco el cambio(aquí pasamos el número aleatorio),parámetro 2: cuántos elementos elimino(en este caso ninguno, porque sólo quiero añadir), parámetro 3: lo que añado)
+    arr.splice(num, 0, add);
+    return arr;
 }
 
-function pintarTablas() {  
-
-    let contador = 0
-
-    for (let i = 0; i < preguntas.length; i++) {
-
-        let respuestasAleatorias = [];
-        
-        respuestasAleatorias.push(respuestas[i])
-        respuestasAleatorias.push(respuesFalsas[contador++])
-        respuestasAleatorias.push(respuesFalsas[contador++])
-        respuestasAleatorias.push(respuesFalsas[contador++])
-        shuffle(respuestasAleatorias)
-
-        let template = `<section class="contPregunta">
-                            <div>
-                                <h2>${preguntas[i]}</h2>
-                            </div>
-                        </section>
-                        <section class="tarjPregunta">
-                                    <article>
-                                        <div id="contResp1" class="botonRespu">
-                                            <input type="radio" id="p${[i]}-r1" name="boton${[i]}" value="${respuestasAleatorias[0]}"/>
-                                            <label for="p${[i]}-r1">${respuestasAleatorias[0]}</label>
-                                        </div>
-                                        <div id="contResp2" class="botonRespu">
-                                            <input type="radio" id="p${[i]}-r2" name="boton${[i]}" value="${respuestasAleatorias[1]}"/>
-                                            <label for="p${[i]}-r2">${respuestasAleatorias[1]}</label>
-                                        </div>
-                                    </article>
-                                    <article>
-                                        <div id="contResp3" class="botonRespu">
-                                            <input type="radio" id="p${[i]}-r3" name="boton${[i]}" value="${respuestasAleatorias[2]}"/>
-                                            <label for="p${[i]}-r3">${respuestasAleatorias[2]}</label>
-                                            
-                                        </div>
-                                        <div id="contResp4" class="botonRespu">
-                                            <input type="radio" id="p${[i]}-r4" name="boton${[i]}" value="${respuestasAleatorias[3]}"/>
-                                            <label for="p${[i]}-r4">${respuestasAleatorias[3]}</label>
-                                        </div>
-                                    </article>
-                        </section>`;
-
-                document.getElementById("pregYRespu").innerHTML += template;
-        
-    }
+function getCheckedInput (arrInp){
     
+    for (let i = 0; i < arrInp.length; i++) {
+    if (arrInp[i].checked == true) {
+        return arrInp[i].value;
+    } 
+    return arrInp[i].value; 
+}};
+
+function printQuestion(completeQuestion) {
+    // RANDOMIZAR OPCIONES
+
+    let answersAll = shaker(completeQuestion.incorrect_answers, completeQuestion.correct_answer);
+    //console.log(answersAll);
+
+    // PINTAR PREGUNTA y OPCIONES RANDOMIZADAS
+    let preg = `
+   <section id="pregunta">
+    <h3>${completeQuestion.question}</h3>
+   </section>
+   <section id="respuesta">
+
+   <div><input id="idforInput1" type="radio" name="inpName" value="${answersAll[0]}"/>
+   <label for="idforInput1">${answersAll[0]}</label></div>
+
+   <div><input id="idforInput2" type="radio" name="inpName" value="${answersAll[1]}"/>
+   <label for="idforInput2">${answersAll[1]}</label></div>
+
+   <div><input id="idforInput3" type="radio" name="inpName" value="${answersAll[2]}"/>
+   <label for="idforInput3">${answersAll[2]}</label></div>
+
+   <div><input id="idforInput4" type="radio" name="inpName" value="${answersAll[3]}"/>
+   <label for="idforInput4">${answersAll[3]}</label></div>
+   </section>`
+
+   document.getElementById("quiz").innerHTML = preg;
+  
+
+   const arrayInputs = document.querySelectorAll("input");
+    //let inputChecked = getCheckedInput(arrayInputs);
+    console.log(arrayInputs);
+    userAnswersAll.push(getCheckedInput(arrayInputs));
+    console.log(userAnswersAll);
 }
 
 
 
-document.querySelector("form").addEventListener("submit", function (event) {
-    event.preventDefault();
+//1. Getting data from API: NO BORRAR: Extrae los datos de la API/archivo
+async function getQuiz() {
+    //let petition = await fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
+    //let rest = await petition.json();
 
-    let respUsuario = [];
+    let dataset = await fetch("./dataset.json");
+    let bloquePregunta = await dataset.json();
 
-    let msj = ""
+    console.log(bloquePregunta);
+    return bloquePregunta;
 
-    respUsuario.push(event.target.boton0.value);
-    respUsuario.push(event.target.boton1.value);
-    respUsuario.push(event.target.boton2.value);
-    respUsuario.push(event.target.boton3.value);
-    respUsuario.push(event.target.boton4.value);
-    respUsuario.push(event.target.boton5.value);
-    respUsuario.push(event.target.boton6.value);
-    respUsuario.push(event.target.boton7.value);
-    respUsuario.push(event.target.boton8.value);
-    respUsuario.push(event.target.boton9.value);
-    
-    let cont=0
+}
+//NO BORRAR: Esta función saca los datos de la función asíncrona.
+async function getData() {
+    const data = await getQuiz();
+    console.log(data);
+    return data;
+    //createQuiz(bloquePregunta, counter);
+}
 
-    for (let i = 0; i < respUsuario.length; i++) {
-        if (respUsuario[i] == respuestas[i]) {
-        msj += `Has acertado, la respuesta correcta es ${respuestas[i]} \n`;
-        cont++
-       } 
-       else if(respUsuario[i] == "") {
-        msj += `No has marcado la respuesta ${[i]} \n`;
-       } 
-       else{
-        msj += `Has fallado, la respuesta correcta es ${respuestas[i]} \n`;
-       }
-        
-    }
-    alert("YEAHH!! VAMOS A VER TUS RESULTADOS!!\n" + `Has acertado ${cont}/10!!\n`+"Este es el resultado por preguntas:\n" + msj)
-    event.target.submit();
-});
+async function runQuiz() {
+    await getData().then(result => {
 
+        const { results: questions } = result;
+        console.log(questions);
 
-pintarTablas();
+        printQuestion(questions[counter])
+        // Toda la lógica que necesite las preguntas
+
+        //Validación
+        document.getElementById("btn-next").addEventListener("click", function (event) {
+           event.preventDefault();
+                    
+        printQuestion(questions[counter])
+
+        }); 
+    })};
+
+    runQuiz();

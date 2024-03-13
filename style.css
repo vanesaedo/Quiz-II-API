@@ -1,6 +1,10 @@
+*{border: 2px white solid}
+
 body{
-    background-color:rgb(0, 0, 0);
-    font-family: "Concert One", sans-serif;
+  
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
 }
 
 main{
@@ -10,133 +14,72 @@ main{
     align-items: center;
     margin-bottom: 200px;
 }
+section{
+    display:flex;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+}
 
+div {display: flex;
+flex-direction: column;}
+#respuesta{
+display:flex;
+flex-direction: column;
+
+
+}
+label {
+    padding:40px 80px;
+    border:1px black solid;
+}
+label::content {
+    background-color: brown;
+}
+input:checked {
+
+    background-color: greenyellow;
+}
+input{
+    
+    margin: 40px;
+}
 #inciarJuego{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-h1{
-    color: dodgerblue;
-    text-shadow: 0px 8px 10px blueviolet;
-    font-size: 100px;
-    text-align: center;
-    margin-bottom: 150px;
-}
-
-h2{
-    font-family: "Concert One", sans-serif;
-    font-size: 25px;
-    color: white;
-    text-align: center;
-}
-
-#play{
+input{
+display:none;
+    background-color: hsl(329, 95%, 43%);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 360px;
-    height: 200px;
-    border-radius: 10px;
-    background-image: url("./images/ecdf.JPG");
-}
 
-a{
-    text-decoration: none;
 }
-
-label{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#textJugar{
-    display: flex;
-    justify-content: center;
-    width: 200px;
-    color: aliceblue;
-    font-size: 80px;
-}
-
-#form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#pregYRespu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-}
-
-article{
-    width: 350px;
+.label{
+    width: 500px;
     height: 100px;
-}
-
-label{
-    width: 350px;
-    height: 50px;
-}
-
-.contPregunta{
-    margin-top: 100px;
-    width: 100%;
-}
-
-.tarjPregunta{
-    display: flex;
-}
-
-#contResp1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: crimson;
-    border-radius: 10px;
-    height: 50%;
+    background-color: #D1512D;
+    padding: 10px;
+    box-sizing: border-box;
     margin: 10px;
-    box-shadow: 5px 10px 10px 10px rgb(175, 1, 36) inset;
-}
-
-#contResp2{
+    border: 3px solid #F5E8E4;
+    border-radius: 20px;
     display: flex;
+    color: #F5E8E4;
     justify-content: center;
-    align-items: center;
-    background-color:goldenrod;
-    border-radius: 10px;
-    height: 50%;
-    margin: 10px;
-    box-shadow: 5px 10px 10px 10px rgb(139, 100, 2) inset;
+    flex-direction: row-reverse;
+
 }
 
-#contResp3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:lightgreen;
-    border-radius: 10px;
-    height: 50%;
-    margin: 10px;
-    box-shadow: 5px 10px 10px 10px rgb(56, 184, 56) inset;
-}
 
-#contResp4{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:cornflowerblue;
-    border-radius: 10px;
-    height: 50%;
-    margin: 10px;
-    box-shadow: 5px 10px 10px 10px rgb(29, 101, 234) inset;
-}
 
-.botonRespu :hover{
+
+
+#btn-answer :hover{
      background-color: rgb(225, 16, 141);
      box-shadow: 10px 0px 10px rgb(110, 6, 69) inset;
      border-radius: 10px;
@@ -149,9 +92,7 @@ label{
 }
 
 #botonSubmit{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  
     width: 300px;
     height: 60px;
     border-radius: 10px;
@@ -160,4 +101,29 @@ label{
     font-size: 20px;
     margin-top: 100px;
     box-shadow: 0px 10px 10px 0px rgb(242, 242, 244);
+}
+
+.title-question {
+    font-size: 2rem;
+}
+.btn-answer{
+    border: 12px black solid;
+    border-radius: 4px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#btn-next {
+    font-size: 16px;
+    font-weight: 100px;
+    background-color: black;
+    color:white;
+    padding:12px 48px;
+    border:0px black solid;
+    border-radius: 4px;
+   
 }
