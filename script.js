@@ -16,14 +16,12 @@ const shaker = (arr, add) => {
 
 function getCheckedInput (arrInp){
     
-    for (let i = 0; i < arrInp.length; i++) {
-       
-    if (arrInp[i].checked == true) {
-        return arrInp[i].value;
-    }  
     
-    //return arrInp[i].value; 
-}};
+    if (arrInp.checked) {
+        return arrInp.checked.value;
+    } 
+     
+};
 
 function printQuestion(completeQuestion) {
     // RANDOMIZAR OPCIONES
@@ -54,12 +52,40 @@ function printQuestion(completeQuestion) {
    document.getElementById("quiz").innerHTML = preg;
   
 
-   const arrayInputs = document.querySelectorAll("input");
+/*    const arrayInputs = document.querySelectorAll("input");
     //let inputChecked = getCheckedInput(arrayInputs);
-    console.log(arrayInputs);
-    userAnswersAll.push(getCheckedInput(arrayInputs));
-    console.log(userAnswersAll);
-}
+    console.log(arrayInputs); */
+
+      //Aquí recojo todos los inputs y los meto en una variable
+      const arrayInputs = document.querySelectorAll("input");
+      //el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
+      // recorro todos los input 
+      arrayInputs.forEach(function (input) {
+          //le digo que este pendiente cada vez que el usuario haga input
+          input.addEventListener("input", function (event) {
+              //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
+              //si checked es false
+              arrayInputs.forEach(
+                  function (input) {
+                      //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
+                      if (input.checked) {
+                        userAnswersAll.push(input.value);
+                          input.parentElement.style.backgroundColor = "black";
+                      } else {
+                          input.parentElement.style.backgroundColor = " rgba(241, 243, 244, 0.5)";
+                      }
+                      //y ahora pintamelos claritos si no esta chequeado
+                  })
+          });
+      });
+  
+      console.log(userAnswersAll);
+      
+  }
+
+    /* userAnswersAll.push(getCheckedInput(arrayInputs));
+    console.log(userAnswersAll); */
+
 
 
 
@@ -96,7 +122,7 @@ async function runQuiz() {
         document.getElementById("btn-next").addEventListener("click", function (event) {
            event.preventDefault();
                     
-        printQuestion(questions[counter])
+        printQuestion(questions[counter++])
 
         }); 
     })};
