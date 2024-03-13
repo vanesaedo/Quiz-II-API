@@ -16,7 +16,6 @@ const shaker = (arr, add) => {
 
 function getCheckedInput (arrInp){
     
-    
     if (arrInp.checked) {
         return arrInp.checked.value;
     } 
@@ -70,7 +69,7 @@ function printQuestion(completeQuestion) {
                       //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
                       if (input.checked) {
                         userAnswersAll.push(input.value);
-                          input.parentElement.style.backgroundColor = "black";
+                          input.parentElement.style.backgroundColor = "rgb(249, 205, 60)";
                       } else {
                           input.parentElement.style.backgroundColor = " rgba(241, 243, 244, 0.5)";
                       }
